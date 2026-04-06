@@ -1,16 +1,34 @@
-# React + Vite
+Harika bir özet hazırlamışsın! Bu içeriği profesyonel bir GitHub README dosyası için İngilizceye (Localization) çevirdim. Teknik terimleri (hook, validation, E2E) sektör standartlarına uygun şekilde bıraktım.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aşağıdaki metni projenin README.md dosyasına ekleyebilirsin:
 
-Currently, two official plugins are available:
+🔐 React Login Form with Cypress E2E Testing
+This project is a technical study covering the development of a modern user login form using React, Reactstrap, and Vite, along with comprehensive End-to-End (E2E) testing using Cypress.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🚀 Features
+Dynamic Form Management: Real-time form tracking using useState and useEffect hooks.
 
-## React Compiler
+Advanced Validation:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Regex-based email validation.
 
-## Expanding the ESLint configuration
+Minimum 4-character password constraint.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+"Terms and Conditions" consent mechanism.
+
+Error Handling: Instant display of FormFeedback messages for invalid inputs.
+
+API Integration: User data verification via MockAPI and asynchronous data fetching with axios.
+
+E2E Testing: Full coverage of form scenarios (successful login, failed login, and button activation states) using Cypress.
+
+🛠️ Tech Stack
+Frontend: React (Vite)
+
+Styling: Bootstrap, Reactstrap, CSS3
+
+HTTP Client: Axios
+
+Testing: Cypress
+
+Router: React Router DOM (v5)
