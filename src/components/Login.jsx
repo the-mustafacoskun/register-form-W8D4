@@ -22,7 +22,7 @@ const validateEmail = (email) => {
 
 const validatePassword = /.{4,}/;
 
-const errorMessages = {
+ const errorMessages = {
     email: "Please enter a valid email address.",
     password: "Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.",
     terms: "You must accept the terms and conditions to proceed."
@@ -103,11 +103,12 @@ export default function Login() {
                         onChange={handleChange}
                         value={formData.email}
                         invalid={errors.email}
+                        data-cy="email-input"
 
                     />
-                    {errors.email && <FormFeedback >
+                    <FormFeedback data-cy="error-msg">
                         {errorMessages.email}
-                    </FormFeedback>}
+                    </FormFeedback>
                 </FormGroup>
                 <FormGroup>
                     <Label for="password">Password</Label>
@@ -119,11 +120,12 @@ export default function Login() {
                         onChange={handleChange}
                         value={formData.password}
                         invalid={errors.password}
+                        data-cy="password-input"
 
                     />
-                    {errors.password && <FormFeedback >
+                    <FormFeedback data-cy="error-msg">
                         {errorMessages.password}
-                    </FormFeedback>}
+                    </FormFeedback>
                 </FormGroup>
 
                 <FormGroup check>
@@ -134,17 +136,18 @@ export default function Login() {
                         onChange={handleChange}
                         checked={formData.terms}
                         invalid={errors.terms}
+                        data-cy="terms-input"
 
                     />{' '}
                     <Label check htmlFor="terms">
                         I agree to terms of service and privacy policy
                     </Label>
-                    {errors.terms && <FormFeedback >
+                    <FormFeedback data-cy="error-msg">
                         {errorMessages.terms}
-                    </FormFeedback>}
+                    </FormFeedback>
                 </FormGroup>
                 <FormGroup className="text-center p-4">
-                    <Button color="primary" disabled={!isValid}>
+                    <Button color="primary" disabled={!isValid} data-cy="submit-button">
                         Sign In
                     </Button>
                 </FormGroup>
