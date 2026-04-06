@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
@@ -65,75 +65,89 @@ export default function Login() {
             }
         }
         if (name === "terms") {
-            setErrors({...errors,[name]:false})
-        } else {
-            setErrors({...errors,[name]:true})
-        }
+            if (value) {
+                setErrors({ ...errors, [name]: false })
+            } else {
+                setErrors({ ...errors, [name]: true })
+            }
 
+        };
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (!isValid) return;
-        axios.get('https://6540a96145bedb25bfc247b4.mockapi.io/api/login')
-            .then((response) => {
-                const user = response.data.find((item) =>
-                    item.password && item.email && item.password === formData.password && item.email === formData.email
-                );
-                if (user) {
-                    setFormData(initialValue);
-                    history.push('/Success')
-                }
-            });
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            if (!isValid) return;
+            axios.get('https://6540a96145bedb25bfc247b4.mockapi.io/api/login')
+                .then((response) => {
+                    const user = response.data.find((item) =>
+                        item.password && item.email && item.password === formData.password && item.email === formData.email
+                    );
+                    if (user) {
+                        setFormData(initialValue);
+                        history.push('/Success')
+                    }
+                });
 
-    };
+        };
 
 
-    return (
-        <Form onSubmit={handleSubmit}>
-            <FormGroup>
-                <Label for="email">Email</Label>
-                <Input
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    type="email"
-                    onChange={handleChange}
-                    value={formData.email}
+        return (
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label for="email">Email</Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        type="email"
+                        onChange={handleChange}
+                        value={formData.email}
+                        invalid={errors.email}
 
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="password">Password</Label>
-                <Input
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password "
-                    type="password"
-                    onChange={handleChange}
-                    value={formData.password}
+                    />
+                    {errors.email && <FormFeedback >
+                        {errorMessages.email}
+                    </FormFeedback>}
+                </FormGroup>
+                <FormGroup>
+                    <Label for="password">Password</Label>
+                    <Input
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password "
+                        type="password"
+                        onChange={handleChange}
+                        value={formData.password}
+                        invalid={errors.password}
 
-                />
-            </FormGroup>
+                    />
+                    {errors.password && <FormFeedback >
+                        {errorMessages.password}
+                    </FormFeedback>}
+                </FormGroup>
 
-            <FormGroup check>
-                <Input
-                    type="checkbox"
-                    name="terms"
-                    id="terms"
-                    onChange={handleChange}
-                    checked={formData.terms}
+                <FormGroup check>
+                    <Input
+                        type="checkbox"
+                        name="terms"
+                        id="terms"
+                        onChange={handleChange}
+                        checked={formData.terms}
+                        invalid={errors.terms}
 
-                />{' '}
-                <Label check htmlFor="terms">
-                    I agree to terms of service and privacy policy
-                </Label>
-            </FormGroup>
-            <FormGroup className="text-center p-4">
-                <Button color="primary" disabled={!isValid}>
-                    Sign In
-                </Button>
-            </FormGroup>
-        </Form>
-    )
-}
+                    />{' '}
+                    <Label check htmlFor="terms">
+                        I agree to terms of service and privacy policy
+                    </Label>
+                    {errors.terms && <FormFeedback >
+                        {errorMessages.terms}
+                    </FormFeedback>}
+                </FormGroup>
+                <FormGroup className="text-center p-4">
+                    <Button color="primary" disabled={!isValid}>
+                        Sign In
+                    </Button>
+                </FormGroup>
+            </Form>
+        )
+    }
