@@ -1,0 +1,16 @@
+  
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './components/Layout.css';
+
+import Login from './components/Login';
+function App() {
+
+  return (
+    <>
+      <Login/>
+    </>
+  )
+}
+
+export default App
